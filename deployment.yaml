@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2023-09-22T02:57:37Z"
+  generation: 1
+  labels:
+    app: clientdeploy
+  name: clientdeploy
+  namespace: default
+  resourceVersion: "483"
+  uid: 830926d3-7fb0-4524-ac5d-5800be68a22f
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: clientdeploy
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: clientdeploy
+    spec:
+      containers:
+      - image: yashdaga81/clientblog
+        imagePullPolicy: Always
+        name: clientblog
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2023-09-22T02:57:41Z"
+    lastUpdateTime: "2023-09-22T02:57:41Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2023-09-22T02:57:37Z"
+    lastUpdateTime: "2023-09-22T02:57:41Z"
+    message: ReplicaSet "clientdeploy-6884bbbcf5" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
