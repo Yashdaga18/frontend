@@ -108,7 +108,7 @@ export default function EditPost() {
 
   useEffect(() => {
     // Fetch post data using Axios
-    axiosInstance.get(`http://localhost:4000/post/${id}`)
+    axiosInstance.get(`http://13.51.157.4:4000/post/${id}`)
       .then((response) => {
         const postInfo = response.data;
         console.log(postInfo)
