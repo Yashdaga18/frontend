@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 export default function IndexPage() {
   const [posts,setPosts] = useState([]);
   useEffect(() => {
-    fetch('http://13.51.157.4:4000/post').then(response => {
+    fetch('http://localhost:4000/post/').then(response => {
       response.json().then(posts => {
         setPosts(posts);
       });
@@ -18,3 +18,32 @@ export default function IndexPage() {
     </>
   );
 }
+
+// import Post from "../Post";
+// import { useEffect, useState } from "react";
+// import axios from 'axios'; // Import Axios
+
+// export default function IndexPage() {
+//   const [posts, setPosts] = useState([]);
+
+//   useEffect(() => {
+//     // Use Axios for the request
+//     axios.get('http://localhost:4000/post')
+//       .then(response => {
+//         // Assuming the response contains data property that is an array of posts
+//         setPosts(response.data);
+//       })
+//       .catch(error => {
+//         // Handle any errors here
+//         console.error('Axios Error:', error);
+//       });
+//   }, []);
+
+//   return (
+//     <>
+//       {posts.length > 0 && posts.map(post => (
+//         <Post key={post.id} {...post} /> // Assuming there is an "id" property in the post data
+//       ))}
+//     </>
+//   );
+// }
